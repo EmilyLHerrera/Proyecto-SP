@@ -10,10 +10,17 @@ Sin embargo muchos mexicanos en base a necesidades extremas cometen el error de 
 Este programa es un calculador de intereses que tendría que pagar una persona al pedir un préstamo en cualquier institución. El programa corre en terminal con Python 3. Presenta un sistema de operaciones que calcula el total a pagar de una persona dependiendo el tiempo, los intereses, comisiones, seguros. Al final, genera la cantidad total a pagar del usuario.
 ### Instrucciones.
 1.-Descarga el archivo "calculadora.py" y córrelo en la terminal.
+
 2.-Ingresa el monto de el préstamo.
+
 3.-Ingresa el tiempo a pagar.
+
 4.-Ingresa los intereses.
+
 5.-Ingresa si cuenta con un seguro de pago.
+
 6.-si cuenta con un seguro de pago ingresa el monto del seguro.
+
 7.-Ingresa la frecuencia de pagos.
+
 8.-El programa mostrará el total a pagar.
