@@ -1,45 +1,46 @@
-# Calculadora de préstamos.
+#calculadora de préstamos
+#Calcular los intereses
 
-print("Bienvenido a tu calculadora de préstamos")
+def calcular_intereses(cantidad,intereses,plazo):
+    """
+(uso deoperadores y funciones)
+recibe:cantidad valor numérico, intereses valor numérico, plazo valor numérico
+calculalos interéses del préstamo
+devuelve:los resultados de los intereses
+"""
+    tasa=intereses/100
+    tiempo=plazo/12
+    interesesf=cantidad*tasa*tiempo
+    return interesesf
 
-#Datos del préstamo
+#calcular con el seguro
 
-cantidad=float(input("Ingresa la cantidad total del préstamo solicitado:"))
-intereses=float(input("Ingresa la tasa anual de intereses en porcentaje (%)"))
-plazo=int(input("Ingresa el plazo para pagar en meses"))
+def calcular_total(cantidad, intereses, seguro):
+    """
+(uso de operadores y funciones)
+recibe:cantidad valor numérico, intereses valor numérico, seguro valor numérico
+suma la cantidad del préstamo, los intereses y el seguro
+devuelve: total a pagar
+"""
+    total=cantidad+intereses+seguro
+    return total
 
-#Operaciones para el cálculo de los intereses
+#parte principal del programa
+#definimos el valor de las variables
 
-interesesf=(intereses/100)
-tasa=(plazo/12)
-interesesfinal=(interesesf*tasa*cantidad)
+cantidad=float(input("Ingresa la cantidad del préstamo en pesos:"))
+intereses=float(input("Ingresa la tasa anual de intereses en porcentaje:"))
+plazo=float(input("Ingresa el plazo para pagar en meses:"))
 
-#Preguntar al usuario sobre su seguro
-
-seguror=int(input("El préstamo cuenta con un seguro de pago, Responde 1 si la respuesta es sí o 2 sí la respuesta es no:"))
-if seguror==1:
-    segurom=float(input("Ingresa el monto del seguro"))
+#decir si los datos son posibles
+if cantidad<=0:
+    print("La cantidad debe ser mayor a cero, tu cálculo no es posible:")
+elif intereses<0:
+    print("La tasa de intereses no puede ser negativa, tu cálculo no es posible")
+elif plazo<=0:
+    print("El plazo a pagar no puede ser igual o menor a 0 tu cálculo no es posible")
 else:
-    segurom=0
+    #si todo es correcto se comenzará a calcular el total a pagar
+    interesesf =calcular_intereses(cantidad,intereses,plazo)
+    print(interesesf)
     
-#Total a pagar
-    
-total=(interesesfinal+cantidad+segurom)
-
-#cantidad de pagos mensuales
-
-pagos=total/plazo
-
-#verificar las entradas
-
-print("Verifica tus datos")
-print("Cantidad del préstamo:",cantidad)
-print("Tasa anual de intereses:",intereses)
-print("Plazo para pagar:",plazo)
-print("Seguro del préstamo",segurom)
-
-#imprimir los resultados
-
-print("Los totales a pagar son:")
-print("La cantidad total a pagar es de:",total)
-print("La cantidad a pagar mensualmente es de:",pagos)
