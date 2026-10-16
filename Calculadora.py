@@ -66,16 +66,28 @@ while continuar == 1:
 
         total = calcular_total(cantidad, intereses_finales, seguro)
         pago_mensual = calcular_pago(total, plazo)
+    #lista de datos del préstamo
+        datos_prestamo = [
+            cantidad,
+            intereses,
+            plazo,
+            intereses_finales,
+            seguro,
+            total ]
+        pagos_mensuales = []
+        for mes in range(1, int(plazo) +1):
+            pagos_mensuales.append(round(pago_mensual, 2))
 
-        print("\nel monto del préstamo es:", cantidad)
-        print("el total de intereses es igual a:", intereses_finales)
-        print("el seguro es:", seguro)
-        print("el total a pagar es igual a:", total)
-        print("El total a pagar mensualmente es:", pago_mensual)
-
-        # Convertimos plazo a int para que la función range() funcione correctamente
-        for mes in range(1, int(plazo) + 1):
-            print("Mes", mes, "-pago", round(pago_mensual, 2))
+        print("monto del préstamo es:", datos_prestamo[0])
+        print("tasa anual de intereses:", datos_prestamo[1], "%")
+        print("plazo en meses:", datos_prestamo[2])
+        print("total de intereses:", datos_prestamo[3])
+        print("monto del seguro:", datos_prestamo[4])
+        print("total a pagar :", datos_prestamo[5])
+        for mes in range(len(pagos_mensuales)):
+            print(
+                "Mes", mes + 1,
+                "-pago:", pagos_mensuales[mes] )
 
     print()
     continuar = int(input("¿Deseas calcular otro prestamo? responde 1 para si, 2 para no: "))
