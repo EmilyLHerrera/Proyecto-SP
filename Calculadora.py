@@ -121,11 +121,17 @@ def mostrar_historial(historial):
         print("Plazo:", historial[numero][0][2], "meses")
         print("")
 
+nombre = input("Porfavor ingresa tu nombre completo: ")
+nombre = nombre.strip().title()
 
-continuar = 1
+print()
+print("Bienvenido", nombre)
+print("Calculadora de prestamos")
+
+continuar = "si"
 historial = []
 
-while continuar == 1:
+while continuar == "si":
     cantidad = float(input(
         "Ingresa la cantidad del préstamo en pesos: "))
     intereses = float(input(
@@ -142,15 +148,17 @@ while continuar == 1:
         intereses_finales = calcular_intereses(
             cantidad, intereses, plazo)
 
-        seguror = 0
+        seguror = ""
 
-        while seguror != 1 and seguror != 2:
-            seguror = int(input(
+        while seguror != "si" and seguror != "no":
+            seguror = input(
                 "¿El préstamo cuenta con seguro? "
-                "Responde 1 para sí, 2 para no: "))
-            if seguror != 1 and seguror != 2:
-                print("Opción no válida. Intenta nuevamente.")
-        if seguror == 1:
+                "si/no: ")
+            seguror= seguror.strip().lower()
+            
+            if seguror != "si" and seguror != "no":
+                print("Opción no válida. Intenta nuevamente respondiendo con si/no: ")
+        if seguror == "si":
             seguro = float(input(
                 "Ingresa el monto del seguro en pesos: "))
             while seguro < 0:
@@ -172,12 +180,24 @@ while continuar == 1:
                                  pagos_mensuales)
 
         historial.append(prestamo)
+        
+        print()
+        print("Cliente: ", nombre)
+        
         mostrar_prestamo(prestamo)
 
     print()
-    continuar = int(input("¿Deseas calcular otro préstamo? "
-        "Responde 1 para sí, 2 para no: "))
+    continuar = input("¿Deseas calcular otro préstamo? "
+        "si/no: ")
+    
+    continuar= continuar.strip().lower()
+    while continuar !="si" and continuar !="no":
+        print("Opción no válida, porfavor escribe únicamente si o no")
+        continuar = input("¿Deseas calcular otro préstamo? si/no: ")
+        continuar = continuar.strip().lower()
 
 mostrar_historial(historial)
 
-print("Gracias por utilizar la calculadora, hasta pronto!!")
+print()
+print("Gracias",nombre," por utilizar la calculadora")
+print("Hasta pronto!!")
